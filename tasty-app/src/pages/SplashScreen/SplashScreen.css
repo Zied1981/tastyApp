@@ -1,0 +1,21 @@
+.splashscreen {
+  background: url("../../../public/img/Pattern.svg") no-repeat center;
+  background-size: contain;
+  background-color: #70b9be;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 44px;
+  color: white;
+}
+
+.splashscreen div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.splashscreen div img {
+  margin-bottom: -20px;
+}

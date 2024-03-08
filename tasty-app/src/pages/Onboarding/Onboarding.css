@@ -1,0 +1,6 @@
+.onboarding {
+  background: url("../../../public/img/Pattern.svg") no-repeat center;
+  background-size: contain;
+  background-color: #70b9be;
+  height: 100vh;
+}

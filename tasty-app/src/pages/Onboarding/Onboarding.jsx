@@ -1,10 +1,10 @@
-import NavBar from "../../components/NavBar/NavBar";
 import "./Onboarding.css";
 const Onboarding = () => {
   return (
     <section className="onboarding">
-      <h1>Onboarding</h1>
-      <NavBar />
+      <article>
+        <h2></h2>
+      </article>
     </section>
   );
 };

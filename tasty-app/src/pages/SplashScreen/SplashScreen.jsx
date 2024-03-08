@@ -2,7 +2,10 @@ import "./SplashScreen.css";
 const SplashScreen = () => {
   return (
     <section className="splashscreen">
-      <h1>SplashScreen</h1>
+      <div>
+        <img src="../../../public/img/Logo.svg" alt="" />
+        <h1>Tasty</h1>
+      </div>
     </section>
   );
 };
