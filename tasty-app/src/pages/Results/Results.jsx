@@ -30,11 +30,21 @@ const Results = () => {
   return (
     <section className="results">
       <SearchBar />
-      {/* <section>
-        {name.map((item, index) => (
-          <div></div>
-        ))}
-      </section> */}
+      <section>
+        {name ? (
+          name.map((item, index) => (
+            <div key={index}>
+              <img src={item.strMealThumb} alt="food" />
+              <div>
+                <h5>{item.strMeal}</h5>
+                <p>{item.strTags}</p>
+              </div>
+            </div>
+          ))
+        ) : (
+          <p>Loading...</p>
+        )}
+      </section>
       <NavBar />
     </section>
   );
