@@ -17,5 +17,37 @@
 }
 
 .splashscreen div img {
-  margin-bottom: -20px;
+  animation: crown 3s ease-in-out infinite;
+}
+
+.splashscreen div h1 {
+  animation: biggerText 3s ease-in-out infinite;
+}
+
+@keyframes crown {
+  0%,
+  100% {
+  }
+  25% {
+    transform: rotateZ(20deg);
+    scale: 1.2;
+  }
+  50% {
+    transform: rotateZ(-20deg);
+    scale: 1.2;
+  }
+}
+
+@keyframes biggerText {
+  0%,
+  100% {
+  }
+  25% {
+    transform: rotateZ(20deg);
+    scale: 1.2;
+  }
+  50% {
+    transform: rotateZ(-20deg);
+    scale: 1.2;
+  }
 }
