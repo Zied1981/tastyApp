@@ -1,0 +1,29 @@
+.results {
+  padding: 10vw;
+}
+
+.results div {
+  box-shadow: 0 10px 20px 1px rgba(188, 188, 188, 0.325);
+  display: flex;
+  gap: 3vw;
+  margin-bottom: 30px;
+  border-radius: 20px;
+}
+
+.results img:first-of-type {
+  width: 40%;
+  border-radius: 20px;
+}
+
+.results img:nth-of-type(2) {
+  width: 10%;
+  height: 10%;
+  margin-top: 15%;
+}
+
+.results h5 {
+  color: #0a2533;
+  font-size: 20px;
+  margin-top: 4vw;
+  margin-right: 15vw;
+}
