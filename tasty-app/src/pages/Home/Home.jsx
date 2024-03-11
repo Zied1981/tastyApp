@@ -2,12 +2,31 @@ import NavBar from "../../components/NavBar/NavBar";
 import "./Home.css";
 import SearchBarHome from "../../components/SearchBarHome/SearchBarHome";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { SearchContext } from "../../context/context";
 
 const Home = () => {
   const [randomMeal, setRandomMeal] = useState();
   const [areas, setAreas] = useState();
   const [categories, setCategory] = useState();
+  const { searchItem } = useContext(SearchContext);
+  const [meals, setMeals] = useState("");
+
+  useEffect(() => {
+    fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchItem}`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.meals != null) {
+          setMeals(data);
+        } else {
+          console.log("hufcdo");
+        }
+      })
+      .catch((err) => console.log("Meal Name", err));
+  }, [searchItem]);
+
+  console.log(meals);
 
   useEffect(() => {
     fetch("https://www.themealdb.com/api/json/v1/1/random.php")
@@ -35,15 +54,28 @@ const Home = () => {
       {" "}
       <SearchBarHome />
       <section className="home">
+        {meals ? (
+          <div className={`suggestions ${searchItem.length > 0 ? "show" : ""}`}>
+            {meals.meals.map((item, index) => (
+              <Link to={`/details/${item.idMeal}`} key={index}>
+                {item.strMeal}
+              </Link>
+            ))}
+          </div>
+        ) : (
+          <p>Loading</p>
+        )}
         <h3>Meal of the Day</h3>
         {randomMeal ? (
-          <div className="random-meal">
-            <h4>{randomMeal.meals[0].strMeal}</h4>
-            <div className="random-info">
-              <p>{randomMeal.meals[0].strCategory}</p>
-              <p>{randomMeal.meals[0].strArea}</p>
+          <Link to={`/details/${randomMeal.meals[0].idMeal}`}>
+            <div className="random-meal">
+              <h4>{randomMeal.meals[0].strMeal}</h4>
+              <div className="random-info">
+                <p>{randomMeal.meals[0].strCategory}</p>
+                <p>{randomMeal.meals[0].strArea}</p>
+              </div>
             </div>
-          </div>
+          </Link>
         ) : (
           <p>Loading...</p>
         )}
@@ -51,9 +83,9 @@ const Home = () => {
         <div className="area-home">
           {areas ? (
             areas.meals.map((item, index) => (
-              <Link to="/categories" key={index}>
+              <NavLink to="/home" key={index}>
                 {item.strArea}
-              </Link>
+              </NavLink>
             ))
           ) : (
             <p>Loading</p>

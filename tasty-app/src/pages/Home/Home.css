@@ -1,15 +1,15 @@
 .home {
   padding-inline: 10vw;
 }
-
+.home h3 {
+  margin-bottom: 12px;
+}
+/* ! Random Styling */
 .random-meal {
   background: url(../../../public/img/randomCard.png) no-repeat left;
   width: 265px;
   height: 175px;
-}
-
-.home h3 {
-  margin-bottom: 12px;
+  margin-bottom: 20px;
 }
 
 .random-meal {
@@ -46,16 +46,77 @@
   margin-top: 5px;
 }
 
+/* !Area Styling */
+
 .area-home {
   display: flex;
   align-items: center;
   gap: 20px;
-  overflow: scroll;
+  overflow-x: scroll;
+  height: 80px;
+  margin-bottom: 30px;
 }
 
+.area-home a {
+  background-color: #f1f5f5;
+  padding: 9px 24px;
+  border-radius: 40px;
+  color: black;
+}
+.area-home a:nth-of-type(1) {
+  background-color: #70b9be;
+  color: white;
+}
+
+.area-home a .active {
+  background-color: #70b9be;
+  color: white;
+}
+
+/* !Categories Styling */
 .categories-home {
   display: flex;
   align-items: baseline;
   gap: 20px;
-  overflow: scroll;
+  overflow-x: scroll;
+}
+
+.single-category {
+  background-color: antiquewhite;
+  padding-inline: 30px;
+}
+
+.single-category a {
+  display: inline-block;
+  width: 200px;
+}
+.single-category a img {
+  height: 220px;
+  width: 200px;
+  object-fit: contain;
+}
+
+/* !Searchbar Styling */
+.suggestions {
+  height: 0px;
+  transition: 0s;
+  position: relative;
+  background-color: rgb(255, 255, 255);
+
+  overflow: hidden;
+}
+
+.show {
+  height: 200px;
+  opacity: 1;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  transition: 1s;
+  width: 70%;
+  box-shadow: 0 10px 20px 1px rgba(188, 188, 188, 0.325);
+}
+.suggestions a {
+  color: black;
+  display: block;
 }
