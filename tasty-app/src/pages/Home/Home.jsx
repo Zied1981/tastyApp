@@ -51,7 +51,7 @@ const Home = () => {
         <div className="area-home">
           {areas ? (
             areas.meals.map((item, index) => (
-              <Link to="/home/categories" key={index}>
+              <Link to="/categories" key={index}>
                 {item.strArea}
               </Link>
             ))
@@ -64,7 +64,7 @@ const Home = () => {
           {categories ? (
             categories.categories.map((item, index) => (
               <div className="single-category" key={index}>
-                <Link to="/home/categories">
+                <Link to="/categories">
                   <img src={item.strCategoryThumb} />
                   {item.strCategory}
                 </Link>
