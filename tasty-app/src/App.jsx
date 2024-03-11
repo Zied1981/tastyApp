@@ -8,15 +8,17 @@ import Results from "./pages/Results/Results";
 import Details from "./pages/Details/Details";
 import SplashScreen from "./pages/SplashScreen/SplashScreen";
 import { useState } from "react";
+import { SearchContext } from "./context/context";
 
 function App() {
   const [loading, setLoading] = useState(false);
+  const [searchItem, setSearchItem] = useState("");
 
   setTimeout(() => {
     setLoading(true);
   }, 3000);
   return (
-    <>
+    <SearchContext.Provider value={{ searchItem, setSearchItem }}>
       {" "}
       {loading ? (
         <BrowserRouter>
@@ -32,7 +34,7 @@ function App() {
       ) : (
         <SplashScreen />
       )}
-    </>
+    </SearchContext.Provider>
   );
 }
 
