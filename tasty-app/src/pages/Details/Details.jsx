@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import NavBar from "../../components/NavBar/NavBar";
-
 import "./Details.css";
 import Ingredients from "../../components/Ingredients/Ingredients";
 import Instructions from "../../components/Instructions/Instructions";
@@ -8,6 +7,7 @@ import Instructions from "../../components/Instructions/Instructions";
 const Details = () => {
   const [data, setData] = useState();
   const [toggle, setToggle] = useState(false);
+  const [dark, setDark] = useState(true);
 
   useEffect(() => {
     fetch("https://www.themealdb.com/api/json/v1/1/lookup.php?i=52772")
@@ -17,7 +17,6 @@ const Details = () => {
   }, []);
 
   let ingridients = [];
-
   const test = () => {
     for (let item in data.meals[0]) {
       if (item.includes("strIngredient")) {
@@ -27,9 +26,7 @@ const Details = () => {
           typeof data.meals[0][item] != "string" ||
           data.meals[0][item] === ""
         ) {
-          /*   console.log("ya"); */
         } else {
-          console.log(data.meals[0][item]);
           ingridients.push(data.meals[0][item]);
         }
       }
@@ -42,7 +39,7 @@ const Details = () => {
   const testMes = () => {
     for (let newItem in data.meals[0]) {
       if (newItem.includes("strMeasure")) {
-        console.log(typeof data.meals[0][newItem]);
+        /*     console.log(typeof data.meals[0][newItem]); */
 
         if (
           typeof data.meals[0][newItem] != "string" ||
@@ -50,7 +47,7 @@ const Details = () => {
         ) {
           /* console.log("yes"); */
         } else {
-          console.log(data.meals[0][newItem]);
+          /*  console.log(data.meals[0][newItem]); */
           measure.push(data.meals[0][newItem]);
         }
       }
@@ -58,11 +55,12 @@ const Details = () => {
   };
   data ? testMes() : console.log("nööö");
   /*  console.log(mesure); */
-  console.log(toggle);
+  /*   console.log(toggle); */
 
   const togglfunc = () => {
     if (toggle === true) {
       setToggle((toggle) => !toggle);
+      setDark((dark) => !dark);
     } else {
       return "";
     }
@@ -70,6 +68,7 @@ const Details = () => {
   const togglfunkki = () => {
     if (toggle === false) {
       setToggle((toggle) => !toggle);
+      setDark((dark) => !dark);
     } else {
       return "";
     }
@@ -98,16 +97,17 @@ const Details = () => {
                 togglfunc
                 /* () => setToggle((toggle) => !toggle) */
               }
-              className="inst-btn"
+              className={`inst-btn ${dark ? "dunkelfarbe" : ""}`}
             >
               Instructions
             </button>
+
             <button
               onClick={
                 togglfunkki
                 /* () => setToggle((toggle) => !toggle) */
               }
-              className="ing-btn"
+              className={`ing-btn ${dark ? "" : "dunkelfarbe"}`}
             >
               Ingredients
             </button>

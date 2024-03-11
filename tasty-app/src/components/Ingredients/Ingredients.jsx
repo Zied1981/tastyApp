@@ -1,35 +1,40 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "./Ingredients.css";
 
 const Ingredients = (props) => {
+  const [array, setArray] = useState([]);
   /*   console.log(props.data);
   console.log(props.newData); */
   let changeData = props.data;
   let newArr = [];
 
-  const finalTest = () => {
-    useEffect(() => {
-      for (let i = 0; i < props.newData.length; i++) {
-        newArr.push(`${changeData[i]} ${props.newData[i]}`);
-      }
-      console.log(newArr);
-    }, []);
-  };
-  changeData ? finalTest() : console.log("nope");
+  useEffect(() => {
+    for (let i = 0; i < props.newData.length; i++) {
+      newArr.push(`${changeData[i]} ${props.newData[i]}`);
+    }
+    setArray(newArr);
+  }, [props.toggolino]);
+  console.log(props.toggolino);
 
-  /*  console.log(props.newData); */
-
-  /* 
-       changeData.push(
-      props.data.toSpliced(i , i, `${props.data[i]} ${props.newData[i]}`)
-    ); */
+  /*  console.log(array); */
 
   /*   console.log(changeData); */
   return (
     <article className={` ${props.toggolino ? "" : "toggleklasse"}  `}>
       <h3>Ingredients</h3>
+
       <section className="ingredients">
-        <div className="cont-left">
+        <div className="cont">
+          {array.map((item, index) => (
+            <div key={index}>
+              <div>
+                <p>{item}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/*  <div className="cont-left">
           {props.data ? (
             props.data.map((item, index) => (
               <div key={index}>
@@ -52,7 +57,7 @@ const Ingredients = (props) => {
           ) : (
             <p>Load...</p>
           )}
-        </div>
+        </div> */}
       </section>
     </article>
   );
