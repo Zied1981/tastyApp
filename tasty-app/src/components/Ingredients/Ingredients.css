@@ -1,0 +1,32 @@
+/* .cont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+.ingredients {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cont-left {
+  justify-content: left;
+  box-shadow: 3px 3px 3px black;
+  border-radius: 10px;
+  padding: 2vw;
+}
+.cont-right {
+  justify-content: left;
+  box-shadow: 3px 3px 3px black;
+  border-radius: 10px;
+  padding: 2vw;
+}
+h3 {
+  margin-bottom: 3vw;
+}
+.cont-left ul {
+  list-style: none;
+}
+
+.toggleklasse {
+  display: none;
+}
