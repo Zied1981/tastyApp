@@ -25,10 +25,10 @@ function App() {
           <Routes>
             <Route path="/" element={<Onboarding />} />
             <Route path="/home" element={<Home />} />
-            <Route path="/home/categories" element={<Categories />} />
-            <Route path="/home/areas" element={<Areas />} />
-            <Route path="/home/results" element={<Results />} />
-            <Route path="/home/details" element={<Details />} />
+            <Route path="/categories" element={<Categories />} />
+            <Route path="/areas" element={<Areas />} />
+            <Route path="/results" element={<Results />} />
+            <Route path="/details" element={<Details />} />
           </Routes>
         </BrowserRouter>
       ) : (

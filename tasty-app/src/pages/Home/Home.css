@@ -48,5 +48,14 @@
 
 .area-home {
   display: flex;
+  align-items: center;
+  gap: 20px;
+  overflow: scroll;
+}
+
+.categories-home {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
   overflow: scroll;
 }

@@ -1,15 +1,27 @@
+import HeartIcon from "../../assets/Navbar/HeartIcon";
+import HomeIcon from "../../assets/Navbar/HomeIcon";
+import HumanIcon from "../../assets/Navbar/HumanIcon";
+import SearchIcon from "../../assets/Navbar/SearchIcon";
 import "./NavBar.css";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 const NavBar = () => {
   return (
-    <nav>
-      <h1>NavBar</h1>
-      <Link to="/home">Home</Link>
-      <Link to="/home/categories">Categories</Link>
-      <Link to="/home/areas">Areas</Link>
-      <Link to="/home/results">Results</Link>
-      <Link to="/home/details">Details</Link>
-    </nav>
+    <div className="navbar">
+      <nav>
+        <NavLink to="/home">
+          <HomeIcon />
+        </NavLink>
+        <NavLink to="/areas">
+          <SearchIcon />
+        </NavLink>{" "}
+        <NavLink to="/details">
+          <HeartIcon />
+        </NavLink>
+        <NavLink to="/details">
+          <HumanIcon />
+        </NavLink>
+      </nav>
+    </div>
   );
 };
 

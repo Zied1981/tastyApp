@@ -2,11 +2,12 @@ import NavBar from "../../components/NavBar/NavBar";
 import "./Home.css";
 import SearchBarHome from "../../components/SearchBarHome/SearchBarHome";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const [randomMeal, setRandomMeal] = useState();
-
   const [areas, setAreas] = useState();
+  const [categories, setCategory] = useState();
 
   useEffect(() => {
     fetch("https://www.themealdb.com/api/json/v1/1/random.php")
@@ -22,7 +23,13 @@ const Home = () => {
       .catch((err) => console.log("Area List", err));
   }, []);
 
-  console.log(areas);
+  useEffect(() => {
+    fetch("https://www.themealdb.com/api/json/v1/1/categories.php")
+      .then((res) => res.json())
+      .then((data) => setCategory(data))
+      .catch((err) => console.log("Categories", err));
+  }, []);
+
   return (
     <>
       {" "}
@@ -40,18 +47,35 @@ const Home = () => {
         ) : (
           <p>Loading...</p>
         )}
-        <h3>Areas</h3>
-        {areas ? (
-          areas.meals.map((item, index) => (
-            <div key={index} className="area-home">
-              <p>{item.strArea}</p>
-            </div>
-          ))
-        ) : (
-          <p>Loading</p>
-        )}
-        <NavBar />
-      </section>
+        <h3>Areas</h3>{" "}
+        <div className="area-home">
+          {areas ? (
+            areas.meals.map((item, index) => (
+              <Link to="/home/categories" key={index}>
+                {item.strArea}
+              </Link>
+            ))
+          ) : (
+            <p>Loading</p>
+          )}
+        </div>
+        <h3>Categories</h3>
+        <div className="categories-home">
+          {categories ? (
+            categories.categories.map((item, index) => (
+              <div className="single-category" key={index}>
+                <Link to="/home/categories">
+                  <img src={item.strCategoryThumb} />
+                  {item.strCategory}
+                </Link>
+              </div>
+            ))
+          ) : (
+            <p>Loading...</p>
+          )}
+        </div>
+      </section>{" "}
+      <NavBar />
     </>
   );
 };
