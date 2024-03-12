@@ -23,9 +23,6 @@ const ResultsComponent = () => {
       .catch((error) => console.log("Fehler", error));
   }, [searchItem]);
 
-  // http://localhost:5174/results/Chicken%20Breast
-  //   path="/results/:mainIngredient"
-
   useEffect(() => {
     fetch(
       `https://www.themealdb.com/api/json/v1/1/filter.php?i=${mainIngredient}`
@@ -49,6 +46,8 @@ const ResultsComponent = () => {
       : ""
   );
 
+  console.log({ ingredientMeals });
+
   return (
     <section>
       <SearchBar />
@@ -64,16 +63,27 @@ const ResultsComponent = () => {
         )}
       </section>
       <section>
-        {ingredientMeals.map((item, index) => (
-          <div key={index}>
-            <img src={item.strMealThumb} alt="food" />
-            <h5>{item.strMeal}</h5>
-            <img
-              src="../../../public/img/Arrow Right - Small.png"
-              alt="arrow"
-            />
-          </div>
-        ))}
+        {ingredientMeals !== null ? (
+          // searchItem.length <= 0 || typeof ingredientMeals === "object" ? (
+          //   <p></p>
+          // ) : (
+          ingredientMeals?.meals?.map((item, index) => (
+            <div key={index}>
+              <img src={item.strMealThumb} alt="food" />
+              <h5>{item.strMeal}</h5>
+              <Link to={`/details/${item.idMeal}`}>
+                {" "}
+                <img
+                  src="../../../public/img/Arrow Right - Small.png"
+                  alt="arrow"
+                />
+              </Link>
+            </div>
+          ))
+        ) : (
+          // )
+          <p> Loading... </p>
+        )}
       </section>
     </section>
   );
