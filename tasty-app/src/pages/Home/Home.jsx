@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { SearchContext } from "../../context/context";
+import AreaList from "../../components/AreaList/AreaList";
 
 const Home = () => {
   const [randomMeal, setRandomMeal] = useState();
@@ -20,13 +21,12 @@ const Home = () => {
         if (data.meals != null) {
           setMeals(data);
         } else {
-          console.log("hufcdo");
+          // setMeals({ Error: "Meal not found" });
+          console.log("No");
         }
       })
       .catch((err) => console.log("Meal Name", err));
   }, [searchItem]);
-
-  console.log(meals);
 
   useEffect(() => {
     fetch("https://www.themealdb.com/api/json/v1/1/random.php")
@@ -63,7 +63,7 @@ const Home = () => {
             ))}
           </div>
         ) : (
-          <p>Loading</p>
+          ""
         )}
         <h3>Meal of the Day</h3>
         {randomMeal ? (
@@ -79,19 +79,14 @@ const Home = () => {
         ) : (
           <p>Loading...</p>
         )}
-        <h3>Areas</h3>{" "}
-        <div className="area-home">
-          {areas ? (
-            areas.meals.map((item, index) => (
-              <NavLink to="/home" key={index}>
-                {item.strArea}
-              </NavLink>
-            ))
-          ) : (
-            <p>Loading</p>
-          )}
+
+        <AreaList data={areas} />
+        <div className="see">
+          <h3>Categories</h3>
+          <Link className="see-all" to="/categories">
+            See all
+          </Link>
         </div>
-        <h3>Categories</h3>
         <div className="categories-home">
           {categories ? (
             categories.categories.map((item, index) => (
