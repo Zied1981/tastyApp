@@ -55,9 +55,7 @@ const Home = () => {
       <SearchBarHome />
       <section className="home">
         {meals ? (
-          <div
-            className={`suggestions ${searchItem.length >= 0 ? "show" : ""}`}
-          >
+          <div className={`suggestions ${searchItem.length > 0 ? "show" : ""}`}>
             {meals.meals.map((item, index) => (
               <Link to={`/details/${item.idMeal}`} key={index}>
                 {item.strMeal}

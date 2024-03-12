@@ -27,3 +27,11 @@
   margin-top: 4vw;
   margin-right: 15vw;
 }
+
+.showNoMeal {
+  display: none;
+}
+
+.result-button {
+  width: 1000px;
+}

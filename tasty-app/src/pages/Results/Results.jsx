@@ -21,16 +21,21 @@ const Results = () => {
   useEffect(() => {
     fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchItem}`)
       .then((res) => res.json())
-      .then((data) => setName(data))
+      .then((data) => {
+        if (data.meals != null) {
+          setName(data);
+        }
+      })
       .catch((err) => console.log("Fehler", err));
   }, [searchItem]);
 
   console.log(testi);
+
   return (
     <section>
       <SearchBar />
       <ResultsComponent testi={{ setTesti }} />
-      <section className={`results ${testi ? "showMeal" : ""} `}>
+      <section className={`results ${testi ? "showNoMeal" : ""} `}>
         {name ? (
           name.meals.map((item, index) => (
             <div key={index}>
