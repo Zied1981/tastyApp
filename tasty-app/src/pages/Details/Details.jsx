@@ -93,23 +93,16 @@ const Details = () => {
           </div>
           <div className="btn">
             <button
-              onClick={
-                togglfunc
-                /* () => setToggle((toggle) => !toggle) */
-              }
-              className={`inst-btn ${dark ? "dunkelfarbe" : ""}`}
-            >
-              Instructions
-            </button>
-
-            <button
-              onClick={
-                togglfunkki
-                /* () => setToggle((toggle) => !toggle) */
-              }
+              onClick={togglfunkki}
               className={`ing-btn ${dark ? "" : "dunkelfarbe"}`}
             >
               Ingredients
+            </button>
+            <button
+              onClick={togglfunc}
+              className={`inst-btn ${dark ? "dunkelfarbe" : ""}`}
+            >
+              Instructions
             </button>
           </div>
         </div>

@@ -16,9 +16,6 @@ const Ingredients = (props) => {
   }, [props.toggolino]);
   console.log(props.toggolino);
 
-  /*  console.log(array); */
-
-  /*   console.log(changeData); */
   return (
     <article className={` ${props.toggolino ? "" : "toggleklasse"}  `}>
       <h3>Ingredients</h3>

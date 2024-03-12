@@ -42,39 +42,43 @@
   border-radius: 30px 30px 0 0;
 }
 .btn {
-  position: relative;
+  height: 4.2rem;
+  max-width: 82%;
+  background-color: rgb(233, 238, 250);
+  margin: auto;
+  border-radius: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 8vw;
+  border-style: none;
 }
 .inst-btn {
-  display: block;
-  border: 1px solid black;
+  border-radius: 15px;
+  padding: 3.3vw 10vw;
+  text-align: center;
   border-style: none;
-  border-radius: 20px;
-  text-align: right;
-  padding: 3.6vw 5vw 3.6vw 7vw;
-  margin-left: 4vw;
-  background-color: #e6ebf2;
+
+  background-color: rgb(233, 238, 250);
   cursor: pointer;
 
   color: #0a2533;
   font-size: 16px;
   font-weight: 800;
-  width: 90%;
-  margin-bottom: 8vw;
 }
 .ing-btn {
-  border: 1px solid black;
-  border-radius: 20px;
-  padding: 2.7vw 1.5vw 2.5vw 1.5vw;
-  width: 40%;
+  border-radius: 15px;
+  padding: 3.3vw 10vw;
+  max-width: 50%;
   cursor: pointer;
+  background-color: rgb(233, 238, 250);
+  border-style: none;
 
   color: #0a2533;
-  /*  background-color: #042628; */
+
   font-size: 16px;
   font-weight: 800;
-  position: absolute;
-  top: 1vw;
-  left: 5vw;
 }
 .ingr-flex {
   display: flex;
@@ -84,9 +88,6 @@
 
   color: #0a2533;
   font-weight: 700;
-}
-.btn {
-  background-color: white;
 }
 
 .dunkelfarbe {
