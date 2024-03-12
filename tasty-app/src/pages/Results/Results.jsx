@@ -15,27 +15,45 @@ const Results = () => {
   // für Ingredient Filter
   const [ingredient, setIngredient] = useState();
 
-  // useEffect(() => {
-  //   fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchItem}`)
-  //     .then((res) => res.json())
-  //     .then((data) => setName(data))
-  //     .catch((err) => console.log("Fehler", err));
-  // }, [searchItem]);
-
   useEffect(() => {
-    fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${searchItem}`)
+    fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchItem}`)
       .then((res) => res.json())
-      .then((data) => setIngredient(data))
+      .then((data) => setName(data))
       .catch((err) => console.log("Fehler", err));
-  }, []);
+  }, [searchItem]);
+
+  // useEffect(() => {
+  //   fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${searchItem}`)
+  //     .then((res) => res.json())
+  //     .then((data) => setIngredient(data))
+  //     .catch((err) => console.log("Fehler", err));
+  // }, []);
+
+  // Ingredients aus dem fetch in einem neuen Array speichern, den wir später mappen
+  // let ingredients = [];
+  // const ingredientnames = () => {
+  //   for (let item in name.meals[0]) {
+  //     if (item.includes("strIngredient")) {
+  //       // console.log(typeof name.meals[0][item]);
+
+  //       if (
+  //         typeof name.meals[0][item] != "object" &&
+  //         name.meals[0][item] != ""
+  //       ) {
+  //         ingredients.push(name.meals[0][item]);
+  //       }
+  //     }
+  //   }
+  // };
+
+  // name ? ingredientnames() : console.log("no");
 
   console.log(name);
-  console.log(searchItem);
 
   return (
     <section>
       <SearchBar />
-      {/* <section className="results">
+      <section className="results">
         {name ? (
           name.meals.map((item, index) => (
             <div key={index}>
@@ -50,10 +68,33 @@ const Results = () => {
         ) : (
           <p>Loading...</p>
         )}
+      </section>
+      {/* <section className="izel">
+        {name ? (
+          name.meals.map((item, index) =>
+            ingredients.map((item2) =>
+              item2.includes(searchItem) ? (
+                <div key={index}>
+                  <img src={item.strMealThumb} alt="food" />
+                  <h5>{item.strMeal}</h5>
+                  <img
+                    src="../../../public/img/Arrow Right - Small.png"
+                    alt="arrow"
+                  />
+                </div>
+              ) : (
+                <p>Loading...</p>
+              )
+            )
+          )
+        ) : (
+          <p>Loading...</p>
+        )}
       </section> */}
-      <section>
-        {ingredient ? (
-          ingredient.meals.map((item, index) => (
+
+      {/* <section>
+        {ingredients ? (
+          ingredients.map((item, index) => (
             <div key={index}>
               <img src={item.strMealThumb} alt="food" />
               <h5>{item.strMeal}</h5>
@@ -66,7 +107,7 @@ const Results = () => {
         ) : (
           <p>Loading...</p>
         )}
-      </section>
+      </section> */}
       <NavBar />
     </section>
   );
