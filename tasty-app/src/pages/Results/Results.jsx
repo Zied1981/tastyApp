@@ -38,17 +38,12 @@ const Results = () => {
       <section className={`results ${testi ? "showNoMeal" : ""} `}>
         {name ? (
           name.meals.map((item, index) => (
-            <div key={index}>
-              <img src={item.strMealThumb} alt="food" />
-              <h5>{item.strMeal}</h5>
-              <Link to={`/details/${item.idMeal}`}>
-                {" "}
-                <img
-                  src="../../../public/img/Arrow Right - Small.png"
-                  alt="arrow"
-                />
-              </Link>
-            </div>
+            <Link to={`/details/${item.idMeal}`}>
+              <div key={index}>
+                <img src={item.strMealThumb} alt="food" />
+                <h5>{item.strMeal}</h5>
+              </div>
+            </Link>
           ))
         ) : (
           <p>Loading...</p>

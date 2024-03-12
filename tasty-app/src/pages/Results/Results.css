@@ -1,5 +1,5 @@
 .results {
-  padding: 10vw;
+  padding: 0 10vw 0 10vw;
 }
 
 .results div {
@@ -8,11 +8,19 @@
   gap: 3vw;
   margin-bottom: 30px;
   border-radius: 20px;
+  overflow: hidden;
+}
+
+.results div:first-of-type {
+  margin-top: 10vw;
+}
+
+.results a:last-of-type > div {
+  margin-bottom: 110px;
 }
 
 .results img:first-of-type {
-  width: 40%;
-  border-radius: 20px;
+  width: 35%;
 }
 
 .results img:nth-of-type(2) {
@@ -23,9 +31,8 @@
 
 .results h5 {
   color: #0a2533;
-  font-size: 20px;
-  margin-top: 4vw;
-  margin-right: 15vw;
+  font-size: 24px;
+  margin: 4vw 1vw 0 2vw;
 }
 
 .showNoMeal {
@@ -34,4 +41,14 @@
 
 .result-button {
   width: 1000px;
+}
+
+/* see all button */
+.see-everything-including {
+  margin-left: 70%;
+  width: 50%;
+}
+
+.show {
+  margin-left: 80px;
 }

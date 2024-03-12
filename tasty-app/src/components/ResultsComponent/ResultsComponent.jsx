@@ -68,23 +68,22 @@ const ResultsComponent = (props) => {
               </Link>
             ))}
       </div>
-      <section>
-        <p className="see-all" onClick={() => props.testi.setTesti(false)}>
-          See All
+
+      <section className="results">
+        <p
+          className="see-all see-everything-including"
+          onClick={() => props.testi.setTesti(false)}
+        >
+          See everything including "{searchItem}"
         </p>
         {ingredientMeals !== null ? (
           ingredientMeals?.meals?.map((item, index) => (
-            <div key={index}>
-              <img src={item.strMealThumb} alt="food" />
-              <h5>{item.strMeal}</h5>
-              <Link to={`/details/${item.idMeal}`}>
-                {" "}
-                <img
-                  src="../../../public/img/Arrow Right - Small.png"
-                  alt="arrow"
-                />
-              </Link>
-            </div>
+            <Link to={`/details/${item.idMeal}`}>
+              <div key={index}>
+                <img src={item.strMealThumb} alt="food" />
+                <h5>{item.strMeal}</h5>
+              </div>
+            </Link>
           ))
         ) : (
           // )
