@@ -12,8 +12,11 @@ const Results = () => {
   //  useContext für Search Input importieren
   const { searchItem, setSearchItem } = useContext(SearchContext);
 
-  // für Name Filter
+  // useState für Name Filter
   const [name, setName] = useState();
+
+  // useState für Test
+  const [testi, setTesti] = useState(false);
 
   useEffect(() => {
     fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchItem}`)
@@ -22,10 +25,12 @@ const Results = () => {
       .catch((err) => console.log("Fehler", err));
   }, [searchItem]);
 
+  console.log(testi);
   return (
     <section>
       <SearchBar />
-      <section className="results">
+      <ResultsComponent testi={{ setTesti }} />
+      <section className={`results ${testi ? "showMeal" : ""} `}>
         {name ? (
           name.meals.map((item, index) => (
             <div key={index}>
@@ -44,7 +49,7 @@ const Results = () => {
           <p>Loading...</p>
         )}
       </section>
-      <ResultsComponent />
+
       <NavBar />
     </section>
   );

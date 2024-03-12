@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { SearchContext } from "../../context/context";
 import { Link, useParams } from "react-router-dom";
 
-const ResultsComponent = () => {
+const ResultsComponent = (props) => {
   //  useContext für Search Input importieren
   const { searchItem, setSearchItem } = useContext(SearchContext);
 
@@ -50,13 +50,16 @@ const ResultsComponent = () => {
 
   return (
     <section>
-      <SearchBar />
       <section>
         {searchItem === "" ? (
           <p></p>
         ) : (
           übersicht.map((item, index) => (
-            <Link key={index} to={`/results/${item}`}>
+            <Link
+              onClick={props.testi.setTesti(true)}
+              key={index}
+              to={`/results/${item}`}
+            >
               {item}
             </Link>
           ))
