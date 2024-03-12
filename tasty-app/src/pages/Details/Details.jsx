@@ -3,14 +3,18 @@ import NavBar from "../../components/NavBar/NavBar";
 import "./Details.css";
 import Ingredients from "../../components/Ingredients/Ingredients";
 import Instructions from "../../components/Instructions/Instructions";
+import { useParams } from "react-router-dom";
 
 const Details = () => {
   const [data, setData] = useState();
   const [toggle, setToggle] = useState(false);
   const [dark, setDark] = useState(true);
 
+  const { id } = useParams();
+  console.log(id);
+
   useEffect(() => {
-    fetch("https://www.themealdb.com/api/json/v1/1/lookup.php?i=52772")
+    fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
       .then((res) => res.json())
       .then((fetchData) => setData(fetchData))
       .catch((err) => console.error("Fehler auf der detailseite", err));
@@ -22,10 +26,7 @@ const Details = () => {
       if (item.includes("strIngredient")) {
         /*     console.log(typeof data.meals[0][item]); */
 
-        if (
-          typeof data.meals[0][item] != "string" ||
-          data.meals[0][item] === ""
-        ) {
+        if (typeof data.meals[0][item] != "string" || data.meals[0][item] === "") {
         } else {
           ingridients.push(data.meals[0][item]);
         }
@@ -41,10 +42,7 @@ const Details = () => {
       if (newItem.includes("strMeasure")) {
         /*     console.log(typeof data.meals[0][newItem]); */
 
-        if (
-          typeof data.meals[0][newItem] != "string" ||
-          data.meals[0][newItem] === ""
-        ) {
+        if (typeof data.meals[0][newItem] != "string" || data.meals[0][newItem] === "") {
           /* console.log("yes"); */
         } else {
           /*  console.log(data.meals[0][newItem]); */
@@ -78,10 +76,7 @@ const Details = () => {
     <section className="details">
       {data ? (
         <div>
-          <img /* style={{backgroundImage={{data.meals[0].strMealThumb}}}} */
-            src={data.meals[0].strMealThumb}
-            alt="bild"
-          />
+          <img /* style={{backgroundImage={{data.meals[0].strMealThumb}}}} */ src={data.meals[0].strMealThumb} alt="bild" />
 
           <div className="details-headliner">
             <div className="details-wrapper">
@@ -92,16 +87,10 @@ const Details = () => {
             </div>
           </div>
           <div className="btn">
-            <button
-              onClick={togglfunkki}
-              className={`ing-btn ${dark ? "" : "dunkelfarbe"}`}
-            >
+            <button onClick={togglfunkki} className={`ing-btn ${dark ? "" : "dunkelfarbe"}`}>
               Ingredients
             </button>
-            <button
-              onClick={togglfunc}
-              className={`inst-btn ${dark ? "dunkelfarbe" : ""}`}
-            >
+            <button onClick={togglfunc} className={`inst-btn ${dark ? "dunkelfarbe" : ""}`}>
               Instructions
             </button>
           </div>

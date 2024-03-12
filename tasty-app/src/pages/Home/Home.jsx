@@ -85,7 +85,7 @@ const Home = () => {
         <AreaList data={areas} />
         <div className="see">
           <h3>Categories</h3>
-          <Link className="see-all" to="/categories">
+          <Link className="see-all" to="/categories/beef">
             See all
           </Link>
         </div>
@@ -93,7 +93,7 @@ const Home = () => {
           {categories ? (
             categories.categories.map((item, index) => (
               <div className="single-category" key={index}>
-                <Link to="/categories">
+                <Link to={`/categories/${item.strCategory}`}>
                   <img src={item.strCategoryThumb} />
                   {item.strCategory}
                 </Link>

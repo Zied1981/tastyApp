@@ -8,39 +8,32 @@ import Results from "./pages/Results/Results";
 import Details from "./pages/Details/Details";
 import SplashScreen from "./pages/SplashScreen/SplashScreen";
 import { useState } from "react";
-import { SearchContext, AreaContext } from "./context/context";
-import ResultsComponent from "./components/ResultsComponent/ResultsComponent";
+import { SearchContext } from "./context/context";
 
 function App() {
   const [loading, setLoading] = useState(false);
   const [searchItem, setSearchItem] = useState("");
-  const [area, setArea] = useState("");
   setTimeout(() => {
     setLoading(true);
   }, 3000);
   return (
-    <SearchContext.Provider value={{ area, setArea }}>
-      <SearchContext.Provider value={{ searchItem, setSearchItem }}>
-        {" "}
-        {loading ? (
-          <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<Onboarding />} />
-              <Route path="/home" element={<Home />} />
-              <Route path="/categories" element={<Categories />} />
-              <Route path="/areas" element={<Areas />} />
-              <Route
-                path="/results/:mainIngredient"
-                element={<ResultsComponent />}
-              />
-              <Route path="/results" element={<ResultsComponent />} />
-              <Route path="/details" element={<Details />} />
-            </Routes>
-          </BrowserRouter>
-        ) : (
-          <SplashScreen />
-        )}
-      </SearchContext.Provider>
+    <SearchContext.Provider value={{ searchItem, setSearchItem }}>
+      {" "}
+      {loading ? (
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Onboarding />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/categories/:categoryName" element={<Categories />} />
+            <Route path="/areas/:areaName" element={<Areas />} />
+            <Route path="/results/:mainIngredient" element={<Results />} />
+            <Route path="/results" element={<Results />} />
+            <Route path="/details/:id" element={<Details />} />
+          </Routes>
+        </BrowserRouter>
+      ) : (
+        <SplashScreen />
+      )}
     </SearchContext.Provider>
   );
 }
