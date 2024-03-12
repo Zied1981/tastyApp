@@ -48,7 +48,7 @@ const Categories = () => {
     <section className="categories">
       <div className="comp-div">
         <SearchBar />
-        <div className="area-home">
+        <div className="select-options">
           {categories ? (
             categories.meals.map((item, index) => (
               <NavLink to={`/categories/${item.strCategory}`} key={index}>

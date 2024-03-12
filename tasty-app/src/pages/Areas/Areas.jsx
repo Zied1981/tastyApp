@@ -51,7 +51,7 @@ const Areas = () => {
     <section className="areas">
       <div className="comp-div">
         <SearchBar />
-        <div className="area-home">
+        <div className="select-options">
           {areas ? (
             areas.meals.map((item, index) => (
               <NavLink to={`/areas/${item.strArea}`} key={index}>

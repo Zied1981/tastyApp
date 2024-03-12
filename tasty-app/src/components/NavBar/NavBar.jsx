@@ -11,7 +11,7 @@ const NavBar = () => {
         <NavLink to="/home">
           <HomeIcon />
         </NavLink>
-        <NavLink to="/areas">
+        <NavLink to="/results">
           <SearchIcon />
         </NavLink>{" "}
         <NavLink to="/details">

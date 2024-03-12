@@ -9,7 +9,7 @@ const AreaList = ({ data }) => {
           See all
         </Link>
       </div>
-      <div className="area-home">
+      <div className="select-options">
         {data ? (
           data.meals.map((item, index) => (
             <NavLink to={`/areas/${item.strArea}`} key={index}>
