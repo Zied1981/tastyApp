@@ -9,6 +9,7 @@ import Details from "./pages/Details/Details";
 import SplashScreen from "./pages/SplashScreen/SplashScreen";
 import { useState } from "react";
 import { SearchContext } from "./context/context";
+import UnderConstruction from "./pages/UnderConstruction/UnderConstruction";
 
 function App() {
   const [loading, setLoading] = useState(false);
@@ -29,6 +30,7 @@ function App() {
             <Route path="/results/:mainIngredient" element={<Results />} />
             <Route path="/results" element={<Results />} />
             <Route path="/details/:id" element={<Details />} />
+            <Route path="/user" element={<UnderConstruction />} />
           </Routes>
         </BrowserRouter>
       ) : (

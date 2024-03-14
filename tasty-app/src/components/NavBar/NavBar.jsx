@@ -14,10 +14,10 @@ const NavBar = () => {
         <NavLink to="/results">
           <SearchIcon />
         </NavLink>{" "}
-        <NavLink to="/details">
+        <NavLink to="/user">
           <HeartIcon />
         </NavLink>
-        <NavLink to="/details">
+        <NavLink to="/user">
           <HumanIcon />
         </NavLink>
       </nav>

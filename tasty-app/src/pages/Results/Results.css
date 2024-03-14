@@ -44,11 +44,13 @@
 }
 
 /* see all button */
-.see-everything-including {
-  margin-left: 70%;
-  width: 50%;
-}
 
 .show {
+  margin-top: -10px;
+  margin-left: -10px;
+}
+
+.suggs {
   margin-left: 80px;
+  margin-top: -10px;
 }

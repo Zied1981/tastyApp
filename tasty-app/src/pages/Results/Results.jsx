@@ -16,7 +16,6 @@ const Results = () => {
   const [name, setName] = useState();
 
   // useState für Test
-  const [testi, setTesti] = useState(false);
 
   useEffect(() => {
     fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchItem}`)
@@ -29,13 +28,11 @@ const Results = () => {
       .catch((err) => console.log("Fehler", err));
   }, [searchItem]);
 
-  console.log(testi);
-
   return (
     <section>
       <SearchBar />
-      <ResultsComponent testi={{ setTesti }} />
-      <section className={`results ${testi ? "showNoMeal" : ""} `}>
+      <ResultsComponent />
+      <section className="results">
         {name ? (
           name.meals.map((item, index) => (
             <Link to={`/details/${item.idMeal}`}>

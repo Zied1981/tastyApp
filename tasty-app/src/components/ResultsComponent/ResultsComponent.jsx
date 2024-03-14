@@ -13,8 +13,7 @@ const ResultsComponent = (props) => {
   // useState für mainIngredient Fetch
   const [ingredientMeals, setIngredientMeals] = useState();
 
-  // useState für div suggestions
-  const [showItems, setShowItems] = useState(false);
+  const [testi, setTesti] = useState(false);
 
   // useParam für mainIngredient Fetch (Link auslesen)
   const { mainIngredient } = useParams();
@@ -53,29 +52,29 @@ const ResultsComponent = (props) => {
       : ""
   );
 
-  const testiRun = () => {
-    props.testi.setTesti(true);
-  };
+  useEffect(() => {
+    if (searchItem.length > 0) {
+      setTesti(true);
+    }
+  }, [searchItem]);
 
   return (
     <section>
-      <div className={`suggestions ${searchItem.length > 0 ? "show" : ""}`}>
+      <div className={`suggestions suggs ${testi ? "show" : ""}`}>
         {searchItem === ""
           ? ""
           : übersicht.map((item, index) => (
-              <Link onClick={testiRun} key={index} to={`/results/${item}`}>
+              <Link
+                onClick={() => setTesti(false)}
+                key={index}
+                to={`/results/${item}`}
+              >
                 {item}
               </Link>
             ))}
       </div>
 
       <section className="results">
-        <p
-          className="see-all see-everything-including"
-          onClick={() => props.testi.setTesti(false)}
-        >
-          See everything including "{searchItem}"
-        </p>
         {ingredientMeals !== null ? (
           ingredientMeals?.meals?.map((item, index) => (
             <Link to={`/details/${item.idMeal}`}>
