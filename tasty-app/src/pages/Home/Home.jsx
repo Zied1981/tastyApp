@@ -52,8 +52,8 @@ const Home = () => {
   return (
     <>
       {" "}
-      <SearchBarHome />
       <section className="home">
+        <SearchBarHome />
         {meals ? (
           <div className={`suggestions ${searchItem.length > 0 ? "show" : ""}`}>
             {meals.meals.map((item, index) => (
